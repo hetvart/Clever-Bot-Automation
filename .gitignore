@@ -1,0 +1,10 @@
+# IDE ignores
+
+/.idea/
+**/*.iml
+**/*.exe
+*.DS_Store
+*.log
+*.xml
+*.html
+
