@@ -7,7 +7,7 @@ module.exports = {
    after : function(browser) {
      console.log('Closing down...');
    },
-   'Create an account': function (browser) {
+   'Create an account': function (browser) { // Step1: register new account within cleverbot.com
      var mainPage = browser.page.mainPage();
      	mainPage.navigate()
      		.assert.title('Cleverbot.com - a clever bot - speak to an AI with some Actual Intelligence?')
@@ -16,21 +16,21 @@ module.exports = {
 
      var signUpSection = mainPage.section.signUpForm
 
-       signUpSection.setValue('@username', 'marofalasqa')
+       signUpSection.setValue('@username', 'maroqalasqae')
      		.setPassword('123456789')
-     		.setValue('@fullName', 'fafarxaa')
-     		.setValue('@email', 'john@namaag.com')
+     		.setValue('@fullName', 'fafarxaaeq')
+     		.setValue('@email', 'john@namaaqge.com')
      		.setValue('@terms_select', 'yes')
      		.signUp()
      		.assert.containsText('@registrationSuccessfulMessage', 'We have sent you an email.')
    },
 
-   'Verify the created account': function(browser){
+   'Verify the created account': function(browser){ // Step2: verify the created account
 
    	//TODO: parse email box here to get a verification link and pass it to mainPage.navigate()
 
    	var mainPage = browser.page.mainPage()
-   	  mainPage.navigate('http://www.cleverbot.com/mz/sv/212478/b11dae16b563')
+   	  mainPage.navigate('http://www.cleverbot.com/mz/sv/212478/b11dae16b563') // here we use verification link from another gmail account to show the verification process
    		  .assert.title('Cleverbot.com - a clever bot - speak to an AI with some Actual Intelligence?')
    		  .expect.section('@signInForm').to.be.visible;
 
@@ -38,7 +38,7 @@ module.exports = {
    		  .assert.containsText('@successfulAccountVerificationMessage', 'account verified, please sign in')
    },
 
-   'Login with the created account': function(browser) {
+   'Login with the created account': function(browser) { // Step3: login to cleverbot with the created account
    	browser.page.mainPage().section.signInForm
    	    .signIn('mirra008', '12345678')
 
@@ -50,7 +50,7 @@ module.exports = {
    profileSection.assert.value('@fullName', 'Mirran')
    },
 
-   'Chating with bot': function(browser) {
+   'Chating with bot': function(browser) { // Step4: sending several messages to the bot
    	var page = browser.page.loggedInPage();
      page.navigate().expect.section('@bot').to.be.visible;
 
